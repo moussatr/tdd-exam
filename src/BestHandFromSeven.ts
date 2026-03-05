@@ -1,11 +1,22 @@
 import { compareHands } from "./HandComparator"
 import { evaluate5 } from "./HandEvaluator"
 
-function combinations(cards:any[], k:number){
+function combinations(cards: any[], k: number): any[][] {
+  if (k === 0) return [[]];
+  if (cards.length === 0) return [];
 
+  const [first, ...rest] = cards;
+
+  // Include the first card in the combination
+  const withFirst = combinations(rest, k - 1).map(comb => [first, ...comb]);
+
+  // Exclude the first card from the combination
+  const withoutFirst = combinations(rest, k);
+
+  return [...withFirst, ...withoutFirst];
 }
 
-export function bestHand(cards:any[]){
+export function bestHand(cards: any[]){
 
   const combos = combinations(cards,5)
 
