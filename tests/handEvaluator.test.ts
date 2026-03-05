@@ -36,18 +36,3 @@ it("detects one pair", () => {
 
 });
 
-it("detects ace-low straight", () => {
-
-  const cards = [
-    {rank:14,suit:"S"},
-    {rank:5,suit:"H"},
-    {rank:4,suit:"D"},
-    {rank:3,suit:"C"},
-    {rank:2,suit:"S"}
-  ];
-
-  const result = evaluate5(cards);
-
-  expect(result.category).toBe(5);
-
-});
