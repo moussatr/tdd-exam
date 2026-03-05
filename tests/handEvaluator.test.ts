@@ -148,3 +148,16 @@ describe("Hand evaluator", () => {
   });
 
 });
+
+describe("chosen5 ordering", () => {
+  it("orders Full House cards by triplet then pair", () => {
+    const cards = [
+      {rank: 2, suit: "S"}, {rank: 2, suit: "H"}, {rank: 2, suit: "D"},
+      {rank: 14, suit: "C"}, {rank: 14, suit: "S"}
+    ] as Card[];
+    
+    const result = evaluate5(cards);
+    
+    expect(result.chosen5.map(c => c.rank)).toEqual([2, 2, 2, 14, 14]);
+  });
+});
