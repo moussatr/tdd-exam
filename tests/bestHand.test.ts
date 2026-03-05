@@ -17,7 +17,9 @@ describe("Best hand from 7 cards", () => {
 
     const result = bestHand(cards);
 
-    expect(result.category).toBe(8);
+    expect(result).not.toBeNull();
+
+    expect(result?.category).toBe(8);
 
   });
 
