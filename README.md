@@ -49,9 +49,16 @@ Génération des 21 combinaisons possibles (5 parmi 7).
 
 Comparaison via le HandComparator pour ne conserver que la meilleure.
 
-3. Rendu "chosen5" et ordonnancement
-Le tableau chosen5 retourné contient exactement les 5 cartes qui composent la meilleure main.
-Règle de tri : Pour garantir le déterminisme des tests, les cartes dans chosen5 sont systématiquement triées par ordre décroissant de rang (de la plus forte à la plus faible), indépendamment de leur appartenance à une paire ou un brelan.
+3. Format de sortie et Ordonnancement de chosen5
+Le tableau chosen5 est retourné avec un ordre déterministe basé sur l'importance sémantique de la catégorie:
+
+
+Groupes (Carré, Full, Brelan, Paires) : Les cartes formant la combinaison sont placées en tête (ex: le brelan avant la paire dans un Full House), suivies des kickers par rang décroissant.
+
+Quintes (Straight) : Triées du rang le plus haut au plus bas. La quinte "Wheel" (As-low) est spécifiquement ordonnée 5, 4, 3, 2, A.
+
+
+Flush / High Card : Triées par rang strictement décroissant.
 
 4. Gestion des égalités et Kickers
 Chaque main évaluée retourne un tableau rankingValues. Ce tableau contient les valeurs clés ordonnées par importance pour la catégorie (ex: pour un Full House, le rang du brelan d'abord, puis le rang de la paire). Le comparateur itère sur ce tableau pour départager les mains de même catégorie sans avoir à recompter les cartes. Note : l'As (14) est géré en tant que carte basse (5) pour le cas spécifique de la suite "Wheel" (A-2-3-4-5).
