@@ -1,3 +1,6 @@
+import { compareHands } from "./HandComparator"
+import { evaluate5 } from "./HandEvaluator"
+
 function combinations(cards:any[], k:number){
 
 }
